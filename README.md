@@ -86,6 +86,3 @@ Every Django `CASCADE` is an `ON DELETE CASCADE` foreign key. Enforced in the da
 
 ## Security
 `password_hash`/`password_verify`, session ID regeneration on login, HttpOnly + SameSite cookies, idle timeout, CSRF tokens on every state-changing form (logout included), PDO prepared statements everywhere, output escaping with `htmlspecialchars`, server-side validation, role checks on every protected page, ownership checks on all private records (other users' records return 404/403), uploads validated by real MIME type with random filenames and **PHP execution disabled** in `uploads/`, transactions with row locks for multi-step operations, credentials kept outside the web root and out of git.
-
-## Screenshots
-Add screenshots of the main pages to `docs/screenshots/` before submission.
