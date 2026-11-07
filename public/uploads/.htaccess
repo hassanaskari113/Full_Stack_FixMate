@@ -1,0 +1,7 @@
+# Uploaded files must NEVER run as code.
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+Options -Indexes -ExecCGI
+RemoveHandler .php .phtml .php3 .php4 .php5 .phps
+RemoveType .php .phtml
