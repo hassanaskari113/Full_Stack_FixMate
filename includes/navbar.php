@@ -8,7 +8,7 @@ function navActive(string $path): string {
 ?>
 <header class="navbar">
   <div class="container navbar-inner">
-    <a class="brand" href="/"><?= logoMark() ?>FixMate</a>
+    <a class="brand" href="/"><?= wordmark() ?></a>
 
     <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
 

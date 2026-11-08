@@ -534,3 +534,15 @@ body::before { content: ""; display: block; flex-shrink: 0; height: 4px; backgro
   .mini-c { animation: bob 8s ease-in-out -4s infinite; }
 }
 @keyframes bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -6px; } }
+
+/* ===== FixMate UI v3: wordmark + taller auth panel ===== */
+.brand { gap: 0; font-size: 1.55rem; font-stretch: 118%; font-weight: 850; letter-spacing: -.035em; }
+.wordmark { display: inline-flex; align-items: baseline; font-stretch: 118%; font-weight: 850; letter-spacing: -.035em; line-height: 1; white-space: nowrap; }
+.wordmark .wm-x { display: inline-block; width: .605em; height: .605em; margin: 0 .05em; vertical-align: baseline; position: relative; top: .04em; overflow: visible; flex-shrink: 0; }
+
+@media (min-width: 901px) {
+  .auth-split { min-height: 1000px; }
+  .auth-aside { justify-content: center; padding: 4.5rem 3.25rem; }
+  .aside-inner { gap: 3rem; }
+  .aside-stack { padding: .9rem 0 1.1rem; }
+}

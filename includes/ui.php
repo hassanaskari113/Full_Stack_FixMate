@@ -131,7 +131,7 @@ function authAside(string $heading, string $text, array $points): void
     ?>
     <aside class="auth-aside">
       <span class="aside-dots" aria-hidden="true"></span>
-      <span class="aside-watermark" aria-hidden="true"><?= logoMark(170, true) ?></span>
+      <span class="aside-watermark" aria-hidden="true"><?= xMark(230, true) ?></span>
       <div class="aside-inner">
         <div>
           <h2><?= e($heading) ?></h2>
@@ -166,4 +166,22 @@ function authAside(string $heading, string $text, array $points): void
       </div>
     </aside>
     <?php
+}
+
+/** Crossed strips of masking tape: the "x" in FixMate. $inverse = white + yellow for blue backgrounds. */
+function xMark(?int $px = null, bool $inverse = false): string
+{
+    $strip = $inverse ? '#FFFFFF' : '#2442F5';
+    $size  = $px !== null ? ' width="' . $px . '" height="' . $px . '"' : '';
+    $pts   = '-1.40,8.00 25.40,8.00 23.90,9.33 25.40,10.67 23.90,12.00 25.40,13.33 23.90,14.67 25.40,16.00 '
+           . '-1.40,16.00 0.10,14.67 -1.40,13.33 0.10,12.00 -1.40,10.67 0.10,9.33';
+    return '<svg class="wm-x" viewBox="0 0 24 24"' . $size . ' overflow="visible" aria-hidden="true">'
+         . '<polygon points="' . $pts . '" fill="' . $strip . '" transform="rotate(45 12 12)"/>'
+         . '<polygon points="' . $pts . '" fill="#FFD23F" fill-opacity=".94" transform="rotate(-45 12 12)"/></svg>';
+}
+
+/** The FixMate wordmark: the "x" is two crossed strips of tape. */
+function wordmark(bool $inverse = false): string
+{
+    return '<span class="wordmark" role="img" aria-label="FixMate">Fi' . xMark(null, $inverse) . 'Mate</span>';
 }

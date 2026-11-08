@@ -24,7 +24,7 @@ if ($fu) {
 
       <div class="footer-top">
         <div class="footer-pitch">
-          <a class="brand" href="/"><?= logoMark(34, true) ?>FixMate</a>
+          <a class="brand" href="/"><?= wordmark(true) ?></a>
           <h2>Got something that needs fixing?</h2>
           <p>Post the job, compare quotes from approved providers, and book the one you trust.</p>
           <?php if ($fu): ?>
