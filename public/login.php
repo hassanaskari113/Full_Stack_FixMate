@@ -47,33 +47,7 @@ $pageTitle = 'Log in';
 require_once BASE_PATH . '/includes/header.php';
 ?>
 <div class="auth-split">
-  <aside class="auth-aside">
-    <div class="aside-inner">
-      <div>
-        <h2>Pick up where you left off.</h2>
-        <p>Your requests, quotes and bookings are waiting in your dashboard.</p>
-      </div>
-      <div class="aside-collage" aria-hidden="true">
-        <div class="mini">
-          <div class="mini-row"><strong>Kitchen tap leaking</strong><span class="badge badge-success">Open</span></div>
-          <div class="mini-meta"><span><?= icon('pin', 15) ?> Gulberg</span><span><?= icon('wallet', 15) ?> Rs 1,000 to Rs 2,500</span></div>
-        </div>
-        <div class="mini mini-quote">
-          <div><span class="mini-label">Quote received</span><strong>Rs 1,500</strong></div>
-          <span>Arrives today<br>4:00 PM</span>
-        </div>
-        <div class="mini mini-done">
-          <span class="tick"><?= icon('check', 18) ?></span>
-          <div><strong>Booking confirmed</strong><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
-        </div>
-      </div>
-      <ul class="aside-list">
-        <li><span class="tick"><?= icon('check', 14) ?></span><span>Customers compare quotes and accept one.</span></li>
-        <li><span class="tick"><?= icon('check', 14) ?></span><span>Providers answer matched requests with a price.</span></li>
-        <li><span class="tick"><?= icon('check', 14) ?></span><span>Every booking can be reviewed once it is done.</span></li>
-      </ul>
-    </div>
-  </aside>
+  <?php authAside('Pick up where you left off.', 'Your requests, quotes and bookings are waiting in your dashboard.', ['Compare quotes side by side', 'Book the provider you trust', 'Review the work afterwards']); ?>
   <div class="auth-main">
   <div class="auth-wrap">
     <div class="card">

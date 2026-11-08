@@ -104,20 +104,66 @@ function icon(string $name, int $size = 18): string
         'truck'  => '<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.7"/><circle cx="17" cy="17.5" r="1.7"/>',
         'check'  => '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
         'search' => '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+        'user'   => '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>',
     ];
     $p = $paths[$name] ?? '';
     return '<svg class="icon" width="' . $size . '" height="' . $size . '" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
          . 'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . $p . '</svg>';
 }
 
-/** FixMate logo mark: a job ticket with a wrench. */
-function logoMark(int $height = 36): string
+/** FixMate logo mark: a job ticket with a wrench. $inverse = white version for blue backgrounds. */
+function logoMark(int $height = 36, bool $inverse = false): string
 {
-    $w = (int) round($height * 44 / 40);
+    $w      = (int) round($height * 44 / 40);
+    $ticket = $inverse ? '#FFFFFF' : '#2442F5';
+    $ink    = $inverse ? '#2442F5' : '#FFFFFF';
     return '<svg class="brand-logo" width="' . $w . '" height="' . $height . '" viewBox="0 0 44 40" aria-hidden="true">'
-         . '<path fill="#2442F5" d="M10 3H34a8 8 0 0 1 8 8V15.5a4.5 4.5 0 0 0 0 9V29a8 8 0 0 1-8 8H10a8 8 0 0 1-8-8V24.5a4.5 4.5 0 0 0 0-9V11a8 8 0 0 1 8-8Z"/>'
-         . '<line x1="13" y1="27" x2="23" y2="17" stroke="#fff" stroke-width="5" stroke-linecap="round"/>'
-         . '<circle cx="27" cy="14" r="6.5" fill="#fff"/>'
-         . '<rect x="27" y="11.5" width="12" height="5" fill="#2442F5" transform="rotate(-45 27 14)"/>'
+         . '<path fill="' . $ticket . '" d="M10 3H34a8 8 0 0 1 8 8V15.5a4.5 4.5 0 0 0 0 9V29a8 8 0 0 1-8 8H10a8 8 0 0 1-8-8V24.5a4.5 4.5 0 0 0 0-9V11a8 8 0 0 1 8-8Z"/>'
+         . '<line x1="13" y1="27" x2="23" y2="17" stroke="' . $ink . '" stroke-width="5" stroke-linecap="round"/>'
+         . '<circle cx="27" cy="14" r="6.5" fill="' . $ink . '"/>'
+         . '<rect x="27" y="11.5" width="12" height="5" fill="' . $ticket . '" transform="rotate(-45 27 14)"/>'
          . '<circle cx="13" cy="27" r="1.5" fill="#FFD23F"/></svg>';
+}
+
+/** Left panel of the login / signup pages. */
+function authAside(string $heading, string $text, array $points): void
+{
+    ?>
+    <aside class="auth-aside">
+      <span class="aside-dots" aria-hidden="true"></span>
+      <span class="aside-watermark" aria-hidden="true"><?= logoMark(170, true) ?></span>
+      <div class="aside-inner">
+        <div>
+          <h2><?= e($heading) ?></h2>
+          <p><?= e($text) ?></p>
+        </div>
+
+        <div class="aside-stack" aria-hidden="true">
+          <div class="mini mini-a">
+            <span class="tape tape-sm"></span>
+            <div class="mini-row"><strong>Kitchen tap leaking</strong><span class="badge badge-success">Open</span></div>
+            <div class="mini-meta"><span><?= icon('pin', 15) ?> Gulberg</span><span><?= icon('wallet', 15) ?> Rs 1,000 to Rs 2,500</span></div>
+          </div>
+          <div class="mini mini-b">
+            <div class="quote-row">
+              <div><span class="mini-label">Quote received</span><strong>Rs 1,500</strong></div>
+              <span class="quote-when"><?= icon('truck', 15) ?> Arrives today, 4:00 PM</span>
+            </div>
+          </div>
+          <div class="mini mini-c">
+            <div class="done-row">
+              <span class="tick"><?= icon('check', 18) ?></span>
+              <div><strong>Booking confirmed</strong><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            </div>
+          </div>
+        </div>
+
+        <ul class="aside-chips">
+          <?php foreach ($points as $pt): ?>
+            <li><?= icon('check', 14) ?> <?= e($pt) ?></li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+    </aside>
+    <?php
 }

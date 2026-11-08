@@ -17,13 +17,25 @@ function navActive(string $path): string {
       <li><a href="/about.php"<?= navActive('/about.php') ?>>About</a></li>
 
       <?php if ($navUser): ?>
+        <?php $displayName = $navUser['first_name'] !== '' ? $navUser['first_name'] : $navUser['username']; ?>
         <li><a href="<?= e(dashboardPath($navUser)) ?>">Dashboard</a></li>
-        <li><a href="/profile.php"<?= navActive('/profile.php') ?>><?= e($navUser['first_name'] !== '' ? $navUser['first_name'] : $navUser['username']) ?></a></li>
         <li>
           <form method="post" action="/logout.php">
             <?= csrfField() ?>
-            <button type="submit" class="link-btn no-loading">Log out</button>
+            <button type="submit" class="btn btn-outline btn-sm no-loading">Log out</button>
           </form>
+        </li>
+        <li class="nav-profile-item">
+          <a class="nav-profile<?= $here === '/profile.php' ? ' active' : '' ?>" href="/profile.php" title="Profile settings">
+            <span class="nav-avatar">
+              <?php if (!empty($navUser['profile_picture'])): ?>
+                <img src="<?= e(uploadUrl($navUser['profile_picture'])) ?>" alt="">
+              <?php else: ?>
+                <?= icon('user', 20) ?>
+              <?php endif; ?>
+            </span>
+            <span class="nav-name"><?= e($displayName) ?></span>
+          </a>
         </li>
       <?php else: ?>
         <li><a href="/login.php"<?= navActive('/login.php') ?>>Log in</a></li>

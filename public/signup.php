@@ -123,33 +123,7 @@ require_once BASE_PATH . '/includes/header.php';
 $cls = fn(string $f) => isset($errors[$f]) ? ' input-error' : '';
 ?>
 <div class="auth-split">
-  <aside class="auth-aside">
-    <div class="aside-inner">
-      <div>
-        <h2>Hire a pro, or become one.</h2>
-        <p>One account, two ways to use FixMate. Choose your role when you sign up.</p>
-      </div>
-      <div class="aside-collage" aria-hidden="true">
-        <div class="mini">
-          <div class="mini-row"><strong>Kitchen tap leaking</strong><span class="badge badge-success">Open</span></div>
-          <div class="mini-meta"><span><?= icon('pin', 15) ?> Gulberg</span><span><?= icon('wallet', 15) ?> Rs 1,000 to Rs 2,500</span></div>
-        </div>
-        <div class="mini mini-quote">
-          <div><span class="mini-label">Quote received</span><strong>Rs 1,500</strong></div>
-          <span>Arrives today<br>4:00 PM</span>
-        </div>
-        <div class="mini mini-done">
-          <span class="tick"><?= icon('check', 18) ?></span>
-          <div><strong>Booking confirmed</strong><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
-        </div>
-      </div>
-      <ul class="aside-list">
-        <li><span class="tick"><?= icon('check', 14) ?></span><span>Hire: post a job and get quotes from approved providers.</span></li>
-        <li><span class="tick"><?= icon('check', 14) ?></span><span>Work: set up your services and areas, then get matched requests.</span></li>
-        <li><span class="tick"><?= icon('check', 14) ?></span><span>Providers are reviewed by an administrator before they can quote.</span></li>
-      </ul>
-    </div>
-  </aside>
+  <?php authAside('Hire a pro, or become one.', 'One account, two ways to use FixMate. Choose your role when you sign up.', ['Hire: post a job, get quotes', 'Work: get matched requests', 'Providers are admin-approved']); ?>
   <div class="auth-main">
   <div class="auth-wrap">
     <div class="card">
